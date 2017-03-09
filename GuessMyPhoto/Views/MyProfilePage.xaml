@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="GuessMyPhoto.Views.MyProfilePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuessMyPhoto.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:croppControl="using:CroppControl"
+    mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar Background="#FFF3F3F3">
+            <AppBarButton x:Name="SaveBtn" Icon="Save" Label="Save" Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Background="#33E0E0E0" BorderThickness="0,0,0,1" BorderBrush="#7FE0E0E0">
+            <TextBlock Text="My profile" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF424242" FontSize="24" FontWeight="Medium" Margin="20,0,0,0"/>
+        </Border>
+        <ScrollViewer x:Name="ScrollViewer" HorizontalScrollMode="Disabled" Grid.Row="1">
+            <Grid x:Name="Grid" Padding="15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="350*"/>
+                    <RowDefinition Height="100*" MinHeight="70"/>
+                    <RowDefinition Height="100*" MinHeight="70"/>
+                    <RowDefinition Height="100*" MinHeight="70"/>
+                    <RowDefinition Height="100*" MinHeight="70"/>
+                    <RowDefinition Height="150*" MinHeight="80"/>
+                    <RowDefinition Height="80*" MinHeight="60"/>
+                    <RowDefinition Height="80*" MinHeight="60"/>
+                    <RowDefinition Height="80*" MinHeight="60"/>
+                    <RowDefinition Height="80*" MinHeight="60"/>
+                    <RowDefinition Height="150*" MinHeight="80"/>
+                </Grid.RowDefinitions>
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout x:Name="comboBoxEmptyFlyout" FlyoutPresenterStyle="{StaticResource FlyoutEmptyNotifficationStyle}" Closed="comboBoxEmptyFlyout_Closed">
+                        <TextBlock x:Name="FlyoutTextBlock" FontStyle="Italic" FontSize="14.667" Foreground="#FF4F4F4F" />
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,20">
+                    <Ellipse x:Name="PhotoEllipse" Width="155" Height="155">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="ImageBrush" ImageSource="{x:Bind ViewModel.Image, Mode=OneWay}" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Button x:Name="ChangePictureBtn" HorizontalAlignment="Stretch" Content="Change picture" FontSize="12" Foreground="White" Style="{StaticResource MyButtonStyle}" Background="#FFFFA918" Margin="0,-10,0,0" Width="80" Click="ChangePictureBtn_Click" />
+                </StackPanel>
+                <TextBox x:Name="NameTextBox" Grid.Row="1" Header="Full name" Text="{x:Bind ViewModel.UserData.Name, Mode=TwoWay}" Style="{StaticResource MyTextBoxStyle}" BorderThickness="1" Background="#FFF2F2F2" BorderBrush="LightGray" InputScope="PersonalFullName" VerticalAlignment="Center"/>
+                <TextBox x:Name="EmailTextBox" Grid.Row="2" Header="Email" Text="{x:Bind ViewModel.UserData.Email, Mode=TwoWay}" Style="{StaticResource MyTextBoxStyle}" BorderThickness="1" Background="#FFF2F2F2" BorderBrush="LightGray" InputScope="EmailSmtpAddress" VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="3" VerticalAlignment="Center">
+                    <TextBlock Text="Сountry calling code" Foreground="#FF535353"/>
+                    <ComboBox ItemsSource="{x:Bind ViewModel.CountriesCodes, Mode=OneWay}" SelectedIndex="{x:Bind ViewModel.SelectedCountryIndex, Mode=TwoWay}" VerticalAlignment="Center" BorderThickness="1" HorizontalAlignment="Stretch" Margin="0,5,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4" VerticalAlignment="Center">
+                    <TextBlock Text="Phone (without code)" Foreground="#FF535353"/>
+                    <TextBox x:Name="PhoneTextBox" Text="{x:Bind ViewModel.UserData.PhoneNumber, Mode=TwoWay}" Style="{StaticResource MyTextBoxStyle}" BorderThickness="1 " Background="#FFF2F2F2" BorderBrush="LightGray" InputScope="TelephoneNumber" Margin="0,5,0,0"/>
+                </StackPanel>
+                <Button x:Name="ConnectToFbBtn" HorizontalAlignment="Stretch" Content="{x:Bind ViewModel.FacebookConnStat, Mode=OneWay}" FontSize="18" Foreground="White" Style="{StaticResource ButtonStyle1}" Background="#FFFFA918" Grid.Row="5" Height="55" Click="ConnectToFbBtn_Click" />
+                
+                <TextBlock Text="Rating" Grid.Row="6" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <TextBlock Text="{x:Bind ViewModel.UserData.TotalRating, Mode=OneWay}" Grid.Row="6" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF818181" Margin="0,0,5,0"/>
+                <TextBlock Text="Score" Grid.Row="7" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <TextBlock Text="{x:Bind ViewModel.UserData.TotalScore, Mode=OneWay}" Grid.Row="7" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF818181" Margin="0,0,5,0"/>
+                <TextBlock Text="Played" Grid.Row="8" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <TextBlock Text="{x:Bind ViewModel.UserData.TotalPlayedPuzzles, Mode=OneWay}" Grid.Row="8" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF818181" Margin="0,0,5,0"/>
+                <TextBlock Text="Created" Grid.Row="9" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <TextBlock Text="{x:Bind ViewModel.UserData.TotalCreatedPuzzles, Mode=OneWay}" Grid.Row="9" FontSize="20" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF818181" Margin="0,0,5,0"/>
+                <Button x:Name="LogoutBtn" HorizontalAlignment="Stretch" Content="Logout" FontSize="20" Foreground="White" Style="{StaticResource MyButtonStyle}" Background="#FFFFA918" Grid.Row="10" Height="55" Click="LogoutBtn_Click" />
+                
+            </Grid>
+        </ScrollViewer>
+        <ProgressRing x:Name="ProgRing" Width="70" Height="70" Grid.RowSpan="2"/>
+    </Grid>
+
+</Page>

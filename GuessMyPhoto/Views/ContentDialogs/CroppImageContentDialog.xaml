@@ -1,0 +1,25 @@
+﻿<ContentDialog
+    x:Class="GuessMyPhoto.Views.ContentDialogs.CroppImageContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuessMyPhoto.Views.ContentDialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:croppControl="using:CroppControl"
+    mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="Auto" Background="#00F2F2F2">
+
+    <Grid VerticalAlignment="Stretch" Background="#33EAEAEA" MinHeight="300">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <croppControl:ImageCropper x:Name="ImageCropper" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,15" />
+        <AppBarButton x:Name="AcceptBtn" Grid.Row="1" Icon="Accept" Label="Accept" HorizontalAlignment="Stretch" Width="Auto" Click="AcceptBtn_Click" Background="#FFFFA918" Foreground="White" Margin="4,0,2,10" BorderBrush="#FFA06D00" BorderThickness="1"/>
+        <AppBarButton x:Name="CancelBtn" Grid.Row="1" Icon="Cancel" Label="Cancel" HorizontalAlignment="Stretch" Width="Auto" Grid.Column="1" Click="CancelBtn_Click" Background="#FFAEAEAE" Foreground="White" Margin="2,0,4,10" BorderBrush="#FF787878" BorderThickness="1" Height="60"/>
+        <ProgressRing x:Name="ProgRing" Grid.ColumnSpan="2" Width="30" Height="30"/>
+    </Grid>
+</ContentDialog>

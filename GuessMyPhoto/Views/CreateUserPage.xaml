@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="GuessMyPhoto.Views.CreateUserPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuessMyPhoto.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Background="#33E0E0E0" BorderThickness="0,0,0,1" BorderBrush="#7FE0E0E0">
+            <TextBlock Text="Create user" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF424242" FontSize="24" FontWeight="Medium" Margin="20,0,0,0"/>
+        </Border>
+        <ScrollViewer x:Name="ScrollViewer" HorizontalScrollMode="Disabled" Grid.Row="1">
+            <Grid x:Name="Grid" Padding="15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="190*"/>
+                    <RowDefinition Height="100*" MinHeight="60"/>
+                    <RowDefinition Height="100*" MinHeight="60"/>
+                    <RowDefinition Height="100*" MinHeight="60"/>
+                    <RowDefinition Height="100*" MinHeight="60"/>
+                    <RowDefinition Height="100*" MinHeight="60"/>
+                    <RowDefinition Height="100*" MinHeight="60"/>
+                    <RowDefinition Height="180*" MinHeight="90"/>
+                </Grid.RowDefinitions>
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout x:Name="comboBoxEmptyFlyout" FlyoutPresenterStyle="{StaticResource FlyoutEmptyNotifficationStyle}" Closed="comboBoxEmptyFlyout_Closed">
+                        <TextBlock x:Name="FlyoutTextBlock" FontStyle="Italic" FontSize="14.667" Foreground="#FF4F4F4F" />
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,20">
+                    <Ellipse x:Name="PhotoEllipse" Width="100" Height="100">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="ImageBrush" ImageSource="{x:Bind ViewModel.Image}" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Button x:Name="ChangePictureBtn" HorizontalAlignment="Stretch" Content="Change picture" FontSize="12" Foreground="White" Style="{StaticResource MyButtonStyle}" Background="#FFFFA918" Margin="0,-10,0,0" Width="80" Click="ChangePictureBtn_Click" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <TextBlock Text="Full name" Foreground="#FF1F1F1F"/>
+                    <TextBox x:Name="NameTextBox" Text="{x:Bind ViewModel.UserData.Name, Mode=TwoWay}" Style="{StaticResource MyTextBoxStyle}" BorderThickness="1" Background="#FFF2F2F2" BorderBrush="LightGray" InputScope="PersonalFullName" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center">
+                    <TextBlock Text="Email" Foreground="#FF1F1F1F"/>
+                    <TextBox x:Name="EmailTextBox" Text="{x:Bind ViewModel.UserData.Email, Mode=TwoWay}" Style="{StaticResource MyTextBoxStyle}" BorderThickness="1" Background="#FFF2F2F2" BorderBrush="LightGray" InputScope="EmailSmtpAddress" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" VerticalAlignment="Center">
+                    <TextBlock Text="Password" Foreground="#FF1F1F1F"/>
+                    <PasswordBox x:Name="PassTextBox" Password="{x:Bind ViewModel.UserData.Password, Mode=TwoWay}" BorderThickness="1" Background="#FFF2F2F2" BorderBrush="LightGray" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4" VerticalAlignment="Center">
+                    <TextBlock Text="Password confirmation" Foreground="#FF1F1F1F"/>
+                    <PasswordBox x:Name="PassConfTextBox" BorderThickness="1" Background="#FFF2F2F2" BorderBrush="LightGray" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5" VerticalAlignment="Center">
+                    <TextBlock Text="Сountry calling code" Foreground="#FF1F1F1F"/>
+                    <ComboBox ItemsSource="{x:Bind ViewModel.CountriesCodes, Mode=OneWay}" SelectedIndex="{x:Bind ViewModel.SelectedCountryIndex, Mode=TwoWay}" VerticalAlignment="Center" BorderThickness="1" HorizontalAlignment="Stretch" Margin="0,3,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Row="6" VerticalAlignment="Center">
+                    <TextBlock Text="Phone (without code)" Foreground="#FF1F1F1F"/>
+                    <TextBox x:Name="PhoneTextBox" Text="{x:Bind ViewModel.UserData.PhoneNumber, Mode=TwoWay}" Style="{StaticResource MyTextBoxStyle}" BorderThickness="1 " Background="#FFF2F2F2" BorderBrush="LightGray" InputScope="TelephoneNumber" Margin="0,3,0,0"/>
+                </StackPanel>
+                <Button x:Name="CreateBtn" HorizontalAlignment="Stretch" Content="Create" FontSize="21.333" Foreground="White" Style="{StaticResource MyButtonStyle}" Background="#FFFFA918" Grid.Row="7" Height="50" Click="SignUpBtn_Click" />
+                <!--<Image x:Name="CroppedImage" Source="{Binding CroppedImage, ElementName=ImageCropper}" Grid.Row="1"/>-->
+                <ProgressRing x:Name="ProgRing" Width="70" Height="70" Grid.RowSpan="8"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

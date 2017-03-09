@@ -1,0 +1,161 @@
+﻿<Page
+    x:Class="GuessMyPhoto.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuessMyPhoto.Views"
+    xmlns:convertersForXaml="using:GuessMyPhoto.Views.ConvertersForXaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:game="using:GuessMyPhoto.Models.Game"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <convertersForXaml:VisibilityConverter x:Key="VisibilityConverter"/>
+        <convertersForXaml:VisibilityOppositConverter x:Key="VisibilityOppositConverter"/>
+        <convertersForXaml:UserPhotoConverter x:Key="UserPhotoConverter"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="HeaderScrollViewer" Margin="0,0,0,0">
+            <Grid VerticalAlignment="Top" Margin="15,15,0,0" Height="135">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.3*"/>
+                    <ColumnDefinition Width="3.3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image Source="ms-appx:///Assets/Graphics/btn_owl.png" Margin="5,0,10,10" Tapped="Image_Tapped" Grid.RowSpan="2"/>
+                <AppBarButton VerticalAlignment="Bottom" Width="55" Height="55" Background="#FFE6E6E6" Icon="Add" Style="{StaticResource AddButtonRound}" Foreground="#FF515151" Click="AddNewGame_Click" Grid.RowSpan="2" BorderBrush="White"/>
+                <Button Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource MyButtonStyle}"  Padding="10" BorderThickness="0" Background="#FFEEEEEE" Height="60" HorizontalContentAlignment="Left" Margin="10,0,20,0" VerticalAlignment="Top" Click="MyProfileBtn_Click">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Width="40" Height="40">
+                            <Ellipse.Fill>
+                                <ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind ViewModel.UserPhoto, Converter={StaticResource UserPhotoConverter}, Mode=OneWay}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Text="My Profile" Grid.Column="1" VerticalAlignment="Center" Foreground="#FF5B5B5B" FontSize="18" Margin="10,0" />
+                    </Grid>
+                </Button>
+                <Button Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource MyButtonStyle}"  Padding="10" BorderThickness="0" Background="#FFEEEEEE" Height="60" Grid.Row="1" HorizontalContentAlignment="Left" Margin="10,0,20,0" VerticalAlignment="Bottom" Click="MyActivityBtn_Click">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="ms-appx:///Assets/Graphics/icon_activity.png" Width="25" Height="25" Margin="7,0,0,0"/>
+                        <TextBlock Text="My Activity" Grid.Column="1" VerticalAlignment="Center" Foreground="#FF5B5B5B" FontSize="18" Margin="10,0"/>
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <RadioButton Content="MY FRIENDS" IsChecked="{x:Bind ViewModel.MyFriendsSelected, Mode=TwoWay}" Style="{StaticResource ToggleButtonTextOnly}" Background="{x:Null}" BorderThickness="0" HorizontalAlignment="Center" Foreground="#FF9C9C9C" GroupName="CategoryRadioBtn" HorizontalContentAlignment="Center" MinWidth="0" FontWeight="Medium" Tapped="RadioButton_Tapped"/>
+                <RadioButton Content="ALL PUZZLES" IsChecked="{x:Bind ViewModel.AllPuzzlesSelected, Mode=TwoWay}" Style="{StaticResource ToggleButtonTextOnly}" Background="{x:Null}" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center" Foreground="#FF9C9C9C" GroupName="CategoryRadioBtn" HorizontalContentAlignment="Center" MinWidth="0" FontWeight="Medium" Tapped="RadioButton_Tapped"/>
+                <RadioButton Content="CHALLENGES" IsChecked="{x:Bind ViewModel.ChallengesSelected, Mode=TwoWay}" Style="{StaticResource ToggleButtonTextOnly}" Background="{x:Null}" BorderThickness="0" Grid.Column="2" HorizontalAlignment="Center" Foreground="#FF9C9C9C" GroupName="CategoryRadioBtn" HorizontalContentAlignment="Center" MinWidth="0" FontWeight="Medium" Tapped="RadioButton_Tapped"/>
+            </Grid>
+            <Grid HorizontalAlignment="Center" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32*" />
+                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="51*" />
+                    <ColumnDefinition Width="51*" />
+                    <ColumnDefinition Width="51*" />
+                    <ColumnDefinition Width="51*" />
+                </Grid.ColumnDefinitions>
+                <RadioButton IsChecked="{x:Bind ViewModel.EnglishLang, Mode=TwoWay}" HorizontalAlignment="Center" BorderThickness="0" Background="{x:Null}" Style="{StaticResource ToggleButtonCountryStyle}" HorizontalContentAlignment="Center" MinWidth="0" GroupName="LanguagesGroup" Tapped="RadioButton_Tapped" Grid.ColumnSpan="2">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="ms-appx:///Assets/Graphics/Languages/language_en.png" Width="35" Height="35"/>
+                    </Grid>
+                </RadioButton>
+                <RadioButton IsChecked="{x:Bind ViewModel.SpanishLang, Mode=TwoWay}" HorizontalAlignment="Center" BorderThickness="0" Background="{x:Null}" Grid.Column="2" Style="{StaticResource ToggleButtonCountryStyle}" HorizontalContentAlignment="Center" MinWidth="0" GroupName="LanguagesGroup" Tapped="RadioButton_Tapped">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="ms-appx:///Assets/Graphics/Languages/language_es.png" Width="35" Height="35"/>
+                    </Grid>
+                </RadioButton>
+                <RadioButton IsChecked="{x:Bind ViewModel.DanishLang, Mode=TwoWay}" HorizontalAlignment="Center" BorderThickness="0" Background="{x:Null}" Grid.Column="3" Style="{StaticResource ToggleButtonCountryStyle}" HorizontalContentAlignment="Center" MinWidth="0" GroupName="LanguagesGroup" Tapped="RadioButton_Tapped">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="ms-appx:///Assets/Graphics/Languages/language_dk.png" Width="35" Height="35"/>
+                    </Grid>
+                </RadioButton>
+                <RadioButton IsChecked="{x:Bind ViewModel.SwedishLang, Mode=TwoWay}" HorizontalAlignment="Center" BorderThickness="0" Background="{x:Null}"  Grid.Column="4" Style="{StaticResource ToggleButtonCountryStyle}" HorizontalContentAlignment="Center" MinWidth="0" GroupName="LanguagesGroup" Tapped="RadioButton_Tapped">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="ms-appx:///Assets/Graphics/Languages/language_se.png" Width="35" Height="35"/>
+                    </Grid>
+                </RadioButton>
+                <RadioButton IsChecked="{x:Bind ViewModel.NorwegianLang, Mode=TwoWay}" HorizontalAlignment="Center" BorderThickness="0" Background="{x:Null}" Grid.Column="5" HorizontalContentAlignment="Center" Style="{StaticResource ToggleButtonCountryStyle}" MinWidth="0" GroupName="LanguagesGroup" Tapped="RadioButton_Tapped">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Image Source="ms-appx:///Assets/Graphics/Languages/language_no.png" Width="35" Height="35"/>
+                    </Grid>
+                </RadioButton>
+            </Grid>
+
+        </StackPanel>
+        <StackPanel x:Name="NoPuzzlesStackPanel" Visibility="{x:Bind ViewModel.ShowNoPuzzlesMessage, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"  Margin="0,20,0,0" Grid.Row="1">
+            <TextBlock Text="No puzzles" Foreground="#FF5B5B5B" HorizontalAlignment="Center" FontSize="16" />
+            <TextBlock Text="Choose another language or create new puzzle" Foreground="#FF5B5B5B" HorizontalAlignment="Center" FontSize="16" MaxWidth="300" TextWrapping="Wrap" TextAlignment="Center" Margin="0,20,0,0"/>
+            <AppBarButton VerticalAlignment="Bottom" Width="65" Height="65" Background="{x:Null}" Icon="Add" Style="{StaticResource AppBarButtonRoundStyle}" Foreground="#FF5B5B5B" Click="AddNewGame_Click" BorderBrush="#FF5B5B5B" Margin="0,10,0,0" HorizontalAlignment="Center" />
+        </StackPanel>
+
+        <ScrollViewer x:Name="GamesScrollViewer" Visibility="{x:Bind ViewModel.ShowNoPuzzlesMessage, Converter={StaticResource VisibilityOppositConverter}, Mode=OneWay}" Grid.Row="1" ViewChanging="GamesScrollViewer_ViewChanging_1" DirectManipulationCompleted="GamesScrollViewer_DirectManipulationCompleted">
+            <ListView x:Name="GamesListView" ItemsSource="{x:Bind ViewModel.Puzzles, Mode=OneWay}" Margin="0,10,0,0" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.HorizontalScrollMode="Disabled"
+          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+          ScrollViewer.IsHorizontalRailEnabled="False"
+          ScrollViewer.VerticalScrollMode="Disabled" Tapped="ListView_Tapped">
+
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0,0,0,0" />
+                        <Setter Property="Margin" Value="0,0,0,5" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="game:Puzzle">
+                        <Grid Height="100" Padding="0,0,0,0" Background="#FF595959">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{x:Bind Background, Mode=OneWay}" Stretch="Fill" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                            <Ellipse Width="40" Height="40" Margin="15,7,0,3">
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{x:Bind CreatorPhoto, Converter={StaticResource UserPhotoConverter}, Mode=OneWay}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
+                                <TextBlock Text="Created by" FontSize="12" Foreground="White"/>
+                                <TextBlock Text="{x:Bind CreatorName, Mode=OneWay}" FontSize="16" Foreground="White" FontWeight="Medium"/>
+                            </StackPanel>
+                            <Image x:Phase="1" Grid.Row="1" Source="{x:Bind LangImage, Mode=OneWay}" Margin="15,3,0,7"/>
+                            <Image x:Phase="1" Grid.Row="1" Grid.Column="1" Source="{x:Bind RatingImage, Mode=OneWay}" Margin="10,5,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="130"/>
+                            <Image x:Phase="1" Source="{x:Bind TypeImage, Mode=OneWay}" Grid.RowSpan="2" Grid.Column="2" Margin="0,10,15,10"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <ProgressRing x:Name="ProgRing" IsActive="{x:Bind ViewModel.PuzzlesDownloading, Mode=OneWay}" Grid.Row="1" MinWidth="50" MinHeight="50"/>
+    </Grid>
+</Page>

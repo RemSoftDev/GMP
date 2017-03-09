@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="GuessMyPhoto.Views.StartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuessMyPhoto.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/Graphics/BG-Gendannet.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Image Source="ms-appx:///Assets/Graphics/splash.png" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="30,0,30,0"/>
+        <Grid x:Name="ButtonsGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="0,20,0,25" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="LoginWithFBBtn" Content="Log in with Facebook" HorizontalAlignment="Center" Style="{StaticResource ButtonStyle1}" Background="White" Foreground="#FF2F5DD8" FontSize="21.333" Grid.ColumnSpan="2" Margin="0,0,0,15" Height="55" Click="LoginWithFBBtn_Click"/>
+            <Button x:Name="CreateUserBtn" HorizontalAlignment="Stretch" Content="Create user" FontSize="21.333" Foreground="White" Style="{StaticResource MyButtonStyle}" Background="#FFFFA918" Grid.Row="1" Margin="0,0,15,0" Height="55" Click="CreateUserBtn_Click" />
+            <Button x:Name="LogInBtn" HorizontalAlignment="Stretch" Content="Login" FontSize="21.333" Foreground="White" Style="{StaticResource MyButtonStyle}" Background="#FFFFA918" Grid.Row="1" Grid.Column="1" Margin="15,0,0,0" Height="55" Click="LogInBtn_Click" />
+        </Grid>
+        <StackPanel x:Name="NoInternetStackPanel" Grid.Row="1" Visibility="Collapsed">
+            <TextBlock Text="No internet accsess!" HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="21.333" FontWeight="Medium"/>
+            <Button x:Name="TryAgainBtn" HorizontalAlignment="Stretch" Content="Try again" FontSize="21.333" Foreground="White" Style="{StaticResource MyButtonStyle}" Background="#FFFFA918" Margin="25,0" Height="55" Click="TryAgainBtn_Click" />
+        </StackPanel>
+        <ProgressRing x:Name="ProgRing" Grid.Row="1" Margin="0,10,0,60" Width="30" Height="30"/>
+
+    </Grid>
+</Page>

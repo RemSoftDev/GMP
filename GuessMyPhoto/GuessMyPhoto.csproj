@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{B6C0AE82-2331-498E-A202-646FA7D8A8E0}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GuessMyPhoto</RootNamespace>
+    <AssemblyName>GuessMyPhoto</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>GuessMyPhoto_StoreKey.pfx</PackageCertificateKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>049995BCBB5C02373037BE471391997FA26B1CBA</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\GMP_icon_1024.scale-100.png" />
+    <Content Include="Assets\GMP_icon_1024.scale-125.png" />
+    <Content Include="Assets\GMP_icon_1024.scale-150.png" />
+    <Content Include="Assets\GMP_icon_1024.scale-200.png" />
+    <Content Include="Assets\GMP_icon_1024.scale-400.png" />
+    <Content Include="Assets\GMP_icon_150.scale-100.png" />
+    <Content Include="Assets\GMP_icon_150.scale-125.png" />
+    <Content Include="Assets\GMP_icon_150.scale-150.png" />
+    <Content Include="Assets\GMP_icon_150.scale-200.png" />
+    <Content Include="Assets\GMP_icon_150.scale-400.png" />
+    <Content Include="Assets\GMP_icon_44.scale-100.png" />
+    <Content Include="Assets\GMP_icon_44.scale-125.png" />
+    <Content Include="Assets\GMP_icon_44.scale-150.png" />
+    <Content Include="Assets\GMP_icon_44.scale-200.png" />
+    <Content Include="Assets\GMP_icon_44.scale-400.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-16.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-24.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-256.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-48.png" />
+    <Content Include="Assets\GMP_icon_44.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\GMP_icon_71.scale-100.png" />
+    <Content Include="Assets\GMP_icon_71.scale-125.png" />
+    <Content Include="Assets\GMP_icon_71.scale-150.png" />
+    <Content Include="Assets\GMP_icon_71.scale-200.png" />
+    <Content Include="Assets\GMP_icon_71.scale-400.png" />
+    <Content Include="Assets\Graphics\btn_add.png" />
+    <Content Include="Assets\Graphics\btn_owl.png" />
+    <Content Include="Assets\Graphics\icon_activity.png" />
+    <Content Include="Assets\Graphics\icon_check.png" />
+    <Content Include="Assets\Graphics\icon_countdown_grey.png" />
+    <Content Include="Assets\Graphics\icon_countdown_white.png" />
+    <Content Include="Assets\Graphics\Languages\language_dk.png" />
+    <Content Include="Assets\Graphics\Languages\language_empty.png" />
+    <Content Include="Assets\Graphics\Languages\language_en.png" />
+    <Content Include="Assets\Graphics\Languages\language_es.png" />
+    <Content Include="Assets\Graphics\Languages\language_no.png" />
+    <Content Include="Assets\Graphics\Languages\language_se.png" />
+    <Content Include="Assets\Graphics\Owls\owl0.png" />
+    <Content Include="Assets\Graphics\Owls\owl1.png" />
+    <Content Include="Assets\Graphics\Owls\owl2.png" />
+    <Content Include="Assets\Graphics\Owls\owl3.png" />
+    <Content Include="Assets\Graphics\Owls\owl4.png" />
+    <Content Include="Assets\Graphics\Owls\owl5.png" />
+    <Content Include="Assets\Graphics\Owls\owl6.png" />
+    <Content Include="Assets\Graphics\Owls\owl7.png" />
+    <Content Include="Assets\Graphics\Owls\owl8.png" />
+    <Content Include="Assets\Graphics\profile_picture.png" />
+    <Content Include="Assets\Graphics\Stars\star_00.png" />
+    <Content Include="Assets\Graphics\Stars\star_05.png" />
+    <Content Include="Assets\Graphics\Stars\star_10.png" />
+    <Content Include="Assets\Graphics\Stars\star_15.png" />
+    <Content Include="Assets\Graphics\Stars\star_20.png" />
+    <Content Include="Assets\Graphics\Stars\star_25.png" />
+    <Content Include="Assets\Graphics\Stars\star_30.png" />
+    <Content Include="Assets\Graphics\Stars\star_35.png" />
+    <Content Include="Assets\Graphics\Stars\star_40.png" />
+    <Content Include="Assets\Graphics\Stars\star_45.png" />
+    <Content Include="Assets\Graphics\Stars\star_50.png" />
+    <Content Include="Assets\Graphics\Stars\star_empty.png" />
+    <Content Include="Assets\Graphics\Stars\star_full.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Square71x71Logo.scale-100.png" />
+    <Content Include="Assets\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\Square71x71Logo.scale-400.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Assets\Wide_310-150.scale-100.png" />
+    <Content Include="Assets\Wide_310-150.scale-200.png" />
+    <Content Include="Assets\Wide_310-150.scale-400.png" />
+    <Content Include="DataFiles\CountriesCodes.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="GuessMyPhoto_StoreKey.pfx" />
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppInfo.cs" />
+    <Compile Include="Enums\DialogResultEnum.cs" />
+    <Compile Include="Enums\GameStatusEnums.cs" />
+    <Compile Include="Enums\ImageTypeToDownload.cs" />
+    <Compile Include="Enums\UserChoiceEnums.cs" />
+    <Compile Include="Enums\UserStatusEnums.cs" />
+    <Compile Include="LogicHelper.cs" />
+    <Compile Include="Models\Contacts\ContactsStore.cs" />
+    <Compile Include="Models\Game\Cell.cs" />
+    <Compile Include="Models\Game\GameModels.cs" />
+    <Compile Include="Models\Game\Puzzle.cs" />
+    <Compile Include="Models\SmtpHelper.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\ActivityViewModel.cs" />
+    <Compile Include="ViewModels\AddNewGameViewModel.cs" />
+    <Compile Include="ViewModels\GameInfoViewModel.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="Views\ActivityPage.xaml.cs">
+      <DependentUpon>ActivityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddNewGamePage.xaml.cs">
+      <DependentUpon>AddNewGamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentDialogs\SelectPictureSourceDialog.xaml.cs">
+      <DependentUpon>SelectPictureSourceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConvertersForXaml\UserPhotoConverter.cs" />
+    <Compile Include="Views\ConvertersForXaml\VisibilityConverter.cs" />
+    <Compile Include="Views\ConvertersForXaml\VisibilityOppositConverter.cs" />
+    <Compile Include="Views\CreateUserPage.xaml.cs">
+      <DependentUpon>CreateUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CountryCode.cs" />
+    <Compile Include="Models\Game\Game.cs" />
+    <Compile Include="Models\HttpHelper.cs" />
+    <Compile Include="Models\User\FacebookHelper.cs" />
+    <Compile Include="Models\User\User.cs" />
+    <Compile Include="Models\User\UserModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="Views\ContentDialogs\CroppImageContentDialog.xaml.cs">
+      <DependentUpon>CroppImageContentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ForgotPasswordPage.xaml.cs">
+      <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameInfoPage.xaml.cs">
+      <DependentUpon>GameInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyProfilePage.xaml.cs">
+      <DependentUpon>MyProfilePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Graphics\BG-Gendannet.png" />
+    <Content Include="Assets\Graphics\FacebookIcon.png" />
+    <Content Include="Assets\Graphics\splash.png" />
+    <Content Include="login_img.png" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Views\ActivityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddNewGamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContentDialogs\SelectPictureSourceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContentDialogs\CroppImageContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ForgotPasswordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Picture\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CroppControl\CroppControl.csproj">
+      <Project>{27fc8598-7f42-41ed-8254-992e95618693}</Project>
+      <Name>CroppControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

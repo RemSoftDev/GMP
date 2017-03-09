@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="49949CryLemon.GuessMyPhoto" Publisher="CN=7BDF9CA6-F4C2-4F55-AD0A-1197F28E64C8" Version="2.0.1.0" />
+  <mp:PhoneIdentity PhoneProductId="b13195cb-e5cc-4362-bfb9-39e2642d39a6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>GuessMyPhoto</DisplayName>
+    <PublisherDisplayName>CryLemon</PublisherDisplayName>
+    <Logo>Assets\GMP_icon_1024.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="GuessMyPhoto.App">
+      <uap:VisualElements DisplayName="GuessMyPhoto" Square150x150Logo="Assets\GMP_icon_150.png" Square44x44Logo="Assets\GMP_icon_44.png" Description="GuessMyPhoto is the ultimative best photo puzzle game, and it is now out in version 2.0." BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide_310-150.png" ShortName="GuessMyPhoto" Square71x71Logo="Assets\GMP_icon_71.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="gold" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape" />
+        </uap:InitialRotationPreference>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <uap:Capability Name="picturesLibrary" />
+    <uap:Capability Name="contacts" />
+  </Capabilities>
+</Package>
